@@ -1,0 +1,32 @@
+# MySQL
+
+# MySQL架构
+MySQL采用分层架构，每层分离的特性可以基于每张表选择存储引擎（5.1+）
+
+![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly90aW1nc2EuYmFpZHUuY29tL3RpbWc_aW1hZ2UmcXVhbGl0eT04MCZzaXplPWI5OTk5XzEwMDAwJnNlYz0xNTczNDk4MTUyNzU1JmRpPTBkZmY3MzdiNWViN2U5YzJiNGFkMGIwMWY3ODQ1OWRhJmltZ3R5cGU9MCZzcmM9aHR0cDovL3d3dy5rb2tvamlhLmNvbS9QdWJsaWMvaW1hZ2VzL3VwbG9hZC9hcnRpY2xlLzIwMTYtMDcvNTc5MGJjNzgyNjRiOS5wbmc?x-oss-process=image/format,png)
+
+# MySQL并发控制
+MySQL的并发在两个层面：服务器层并发和存储引擎并发
+
+解决并发控制通过锁系统解决，一般分为共享锁(读锁)和排他锁(写锁)两类锁组成。
+
+加锁会消耗系统资源，锁的粒度越小，就消耗大量资源管理锁。所以锁策略需要在锁开销和数据安全找到平衡点。MySQL提供了存储引擎实现独有的锁策略。
+
+表锁：开销最小，但性能不好，适用于读多写少。写锁优先级大于读锁(可插队)，MyISAM使用该锁。虽然存储引擎管理自己的锁，但MySQL本身也能在不同场景使用不同锁：如`ALTER TABLE`语句使用表锁，而不会考虑存储引擎
+
+行级锁：开销最大，性能最好。适用于写多场景。InnoDB、Falcon存储引擎使用该锁。
+# 事务
+事务要满足ACID<br>
+事务的隔离级别SQL标准定义了4类：读未提交（脏读问题）、读已提交（不可重复读问题）、可重复读（幻读）、串行化；其中MySQL默认在可重复读的基础上通过MVCC解决了幻读。MySQL可以通过`SET TRANSACTION ISONLATION LEVEL READ COMMITTED`设置隔离级别。
+
+对于死锁问题，MySQL采用死锁预知循环、死锁检测和死锁超时机制解决
+
+事务日志(redo、undo)使事务处理更高效。更新数据先写入内存，之后写入磁盘的事务日志(append操作)，最后在某个时间点上将变化的数据更新到磁盘数据库
+
+MySQL的管理事务是由下层的存储引擎实现事务的处理。这意味着，在单一事务中，混合使用不同存储引擎不可靠。原因在于回滚时非事务表无法回滚。
+
+在事务中，MySQL的InnoDB会根据隔离级别自动处理加锁解锁，这属于隐式锁。InnoDB也支持的显示锁：`SELECT ... LOCK IN SHARE MODE`, `SELECT ... FOR UPDATE`
+MySQL服务器层实现锁的命令：`LOCK TABLES`, `UNLOCK TABLES`。这两种锁在与事务处理之间交互作用比较复杂，会导致一些不可预料的行为，不建议使用。
+
+# 多版本并发控制MVCC
+
