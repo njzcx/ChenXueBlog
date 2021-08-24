@@ -42,10 +42,10 @@ jenkinsci/jenkins:lts
 
 初次启动的时候，可以通过`docker logs -f jenkins`查看控制台的密码，通过这个密码登录系统。（~/jenkins的初始化文件也有密码）
 
-启动后就可以通过`127.0.0.1:8080`访问jenkins了。输入密码，新建用户，安装默认插件。手动需要安装的插件有：
-`Maven Integration plugin`：有了它在新建Job时才能有Maven项目可以选择
-`Deploy to container Plugin`：将war包部署到tomcatshang
-`Publish Over SSH`：通过ssh推送文件，并可以执行shell命令
+启动后就可以通过`127.0.0.1:8080`访问jenkins了。输入密码，新建用户，安装默认插件。手动需要安装的插件有：<br>
+`Maven Integration plugin`：有了它在新建Job时才能有Maven项目可以选择。<br>
+`Deploy to container Plugin`：将war包部署到tomcatshang。<br>
+`Publish Over SSH`：通过ssh推送文件，并可以执行shell命令。<br>
 >插件安装完成后最好重启一下jenkins，有几率jenkins会不生效
 
 还需要指定jenkins的jdk和maven，进入`系统管理`->`全局工具配置` ，jdk在jenkins中的`/usr/lib/jvm/java-8-openjdk-amd64`目录中，maven需要让他自动下载（这种方式不是很好，可以使用docker的volumn去挂载一个maven供jenkins使用）
@@ -56,31 +56,31 @@ jenkinsci/jenkins:lts
 进入该项目，左侧树中有`配置`按钮，点击进去出现如下界面。
 ![这里写图片描述](https://img-blog.csdn.net/2018071010222772?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 从上到下的配置是（**构建时也是按照从上到下进行执行的**）：
-`描述`：就是项目详情，根据项目情况实际情况随意填写
-`源码管理`：`Repositories`里面填写giturl，由于开源没有用户密码和ssh文件，下面的`Credentials`为空即可，如果是gitlab私有库或有权限限制则需要`Add`，`Branches to build`选择你需要构建的分支。
+`描述`：就是项目详情，根据项目情况实际情况随意填写。<br>
+`源码管理`：`Repositories`里面填写giturl，由于开源没有用户密码和ssh文件，下面的`Credentials`为空即可，如果是gitlab私有库或有权限限制则需要`Add`，`Branches to build`选择你需要构建的分支。<br>
 `构建触发器`：我选择了两个常用的触发构建方式，`触发远程构建`让git使用hook的方式访问一个jenkins的url进行触发，本例中触发的url为127.0.0.1:8080/job/DataPlatform/build?token=zhangchx。`轮训SCM`是定时检查代码是否有变化，有变化则触发构建，值为5个`*`，分别表示分钟（0-59），小时（0-23），天（1-31），月份（1-12），周（0-7），其中H表示随机，H/5表示每5分钟检查一次。
 ![这里写图片描述](https://img-blog.csdn.net/20180710102141982?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-`构建环境`：无需配置
-`Pre Steps`：构建前的操作，可以增加`执行shell`，配置脚本`echo "Pre Steps脚本启动成功"`，此内容会在构建控制台中打印出来
-`Build`：`Root POM`配置pom.xml（要构建的工程必须是maven，有pom文件），`Goals and options`配置`clean package`（也就是mvn的构建命令）
-`Post Steps`：构建完成后的操作，可以增加`执行shell`，配置脚本`echo "Post Steps脚本启动成功${WORKSPACE}"`，`${WORKSPACE}`为jenkins的环境变量。上方的3个单选项分别代表构建成功后执行、构建成功或不稳定执行、总是执行
+`构建环境`：无需配置<br>
+`Pre Steps`：构建前的操作，可以增加`执行shell`，配置脚本`echo "Pre Steps脚本启动成功"`，此内容会在构建控制台中打印出来<br>
+`Build`：`Root POM`配置pom.xml（要构建的工程必须是maven，有pom文件），`Goals and options`配置`clean package`（也就是mvn的构建命令）<br>
+`Post Steps`：构建完成后的操作，可以增加`执行shell`，配置脚本`echo "Post Steps脚本启动成功${WORKSPACE}"`，`${WORKSPACE}`为jenkins的环境变量。上方的3个单选项分别代表构建成功后执行、构建成功或不稳定执行、总是执行。
 ![这里写图片描述](https://img-blog.csdn.net/20180710104553560?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-`构建设置`：可以配置构建完成后Email通知，我这里没有配置。（很简单，在设置-全局设置中配置Email的发件人账户，这里再配置收件人即可）
-`构建后操作`：这一步先不配置
+`构建设置`：可以配置构建完成后Email通知，我这里没有配置。（很简单，在设置-全局设置中配置Email的发件人账户，这里再配置收件人即可）<br>
+`构建后操作`：这一步先不配置<br>
 到此基本的配置都已经完成了，可以使用jenkins将github上的代码拉下来进行构建了。返回项目页面，在左侧点击`立即构建`或修改代码等待5分钟或访问`触发远程构建`的URL。jenkins就会开始构建了。
 ![这里写图片描述](https://img-blog.csdn.net/20180710112203568?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 ![这里写图片描述](https://img-blog.csdn.net/20180710112212611?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 查看控制台，我们可以看到日志，如果失败需要根据日志判断失败原因，是工程build失败还是和jenkins配置有关。
 >第一次构建时由于maven要下载jar包，所以有些慢，实在不行就修改pom.xml，把仓库镜像改成国内地址。
 ## 第三步 推送war包到tomcat服务器
-上一步已经可以构建出war包，并在target中。这一步我们将war包推送到远程的一台tomcat服务器上去（tomcat我部署在运行VM的宿主机器上）。
-进入jenkins的项目配置，修改`构建后操作`这一项
+上一步已经可以构建出war包，并在target中。这一步我们将war包推送到远程的一台tomcat服务器上去（tomcat我部署在运行VM的宿主机器上）。<br>
+进入jenkins的项目配置，修改`构建后操作`这一项。<br>
 `构建后操作`：由于前面安装了`Deploy to container Plugin`，`Publish Over SSH`插件，这里就会有两个选项
 ![这里写图片描述](https://img-blog.csdn.net/2018071010490078?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 这一步我们只用到`Deploy to container Plugin`，选择它之后，会出现下面这个配置窗。
 ![这里写图片描述](https://img-blog.csdn.net/20180710112344521?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-`WAR/EAR files`：war包相对workspace的地址
-`Context path`：部署到tomcat的上下文名称，例如：127.0.0.1:8080/DataCollect可以访问到该项目
+`WAR/EAR files`：war包相对workspace的地址<br>
+`Context path`：部署到tomcat的上下文名称，例如：127.0.0.1:8080/DataCollect可以访问到该项目<br>
 `Containers`：指定部署到的tomcat版本，tomcat服务器的地址以及用户名密码，这里用户需要在tomcat中有manager的权限，你需要修改tomcat目录下conf/tomcat-user.xml，添加类似如下的用户。
 ```
 <role rolename="manager-gui"/>
@@ -137,25 +137,25 @@ Dockerfile如何编写这个需要各位读者自行学习，我这里使用的�
 由于之前安装了`Publish Over SSH`这个插件，就可以完成上述传输操作。
 首先需要到`系统管理`->`系统设置`配置`Publish over SSH`内容。我这里使用的是使用账户密码方式登录（可以使用ssh文件登录）。配置如下：
 ![这里写图片描述](https://img-blog.csdn.net/20180710125401641?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-`Passphrase`：登录密码
-`Name`：服务器名称（自定）
-`Hostname`：远程服务器地址
-`Username`：登录用户
-`Remote Directory`：访问的远程目录
+`Passphrase`：登录密码<br>
+`Name`：服务器名称（自定）<br>
+`Hostname`：远程服务器地址<br>
+`Username`：登录用户<br>
+`Remote Directory`：访问的远程目录<br>
 
-再进入jenkins的项目配置，修改`构建后操作`这一项
-`构建后操作`：使用`Publish Over SSH`这个插件，对应的选项是`Send build artifacts over SSH`
-对`Send build artifacts over SSH`进行配置如下：
-`SSH server Name`：需要SSH连接的Name（刚才配置好的）
-`Source files`：要拷贝的文件地址（相对`workspace`）
-`Remove prefix`：去掉`Source files`的前缀部分
-`Remote directory`：要拷贝到host机器的哪个目录（这个目录是相对`Remote Directory`的目录）
+再进入jenkins的项目配置，修改`构建后操作`这一项。<br> 
+`构建后操作`：使用`Publish Over SSH`这个插件，对应的选项是`Send build artifacts over SSH`<br>
+对`Send build artifacts over SSH`进行配置如下：<br>
+`SSH server Name`：需要SSH连接的Name（刚才配置好的）<br>
+`Source files`：要拷贝的文件地址（相对`workspace`）<br>
+`Remove prefix`：去掉`Source files`的前缀部分<br>
+`Remote directory`：要拷贝到host机器的哪个目录（这个目录是相对`Remote Directory`的目录）<br>
 `Exec command`：拷贝完成执行的命令
 
 我这里需要传输两个文件，一个是war包，另一个是Dockerfile。我的配置如下：
 ![这里写图片描述](https://img-blog.csdn.net/20180710130223726?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25qemN4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-第一个`Exec command`调用的test.sh是随便echo点东西
-第二个`Exec command`是调用一个shell脚本，里面docker会执行build、push等一系列命令，这里贴出来
+第一个`Exec command`调用的test.sh是随便echo点东西。<br>
+第二个`Exec command`是调用一个shell脚本，里面docker会执行build、push等一系列命令，这里贴出来。<br>
 ```/home/zhangchx/docker/docker-datacollect.sh "`pwd`/docker/DataCollect" $BUILD_NUMBER```
 ```
 echo "当前位置："`pwd`
@@ -199,6 +199,7 @@ docker run -d -p $API_PORT:8080 --name $CONTAINER_NAME $IMAGE_NAME
 #rm -f Dockerfile
 ```
 >这里有坑，由于使用的DooD的形式（docker里的jenkins访问宿主机构建），登录用户必须对docker命令有权限，不能加sudo。同时宿主机的docker是在snap目录下，宿主机可以正常使用docker命令（宿主机环境变量里有配置snap），而jenkins远程过来使用的环境变量是jenkins这台docker虚拟机的，所有无法访问docker命令，必须先对PATH进行扩展才行。
+
 >非root执行docker的命令，用户名jmh添加到docker组内：`sudo gpasswd jmh docker`，修改sock权限：`sudo chmod a+rw /var/run/docker.sock`
 
 执行jenkins的构建，可以从控制台看到日志
