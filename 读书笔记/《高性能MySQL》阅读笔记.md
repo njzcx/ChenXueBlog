@@ -3,8 +3,6 @@
 # MySQL架构
 MySQL采用分层架构，每层分离的特性可以基于每张表选择存储引擎（5.1+）
 
-![在这里插入图片描述](https://imgconvert.csdnimg.cn/aHR0cHM6Ly90aW1nc2EuYmFpZHUuY29tL3RpbWc_aW1hZ2UmcXVhbGl0eT04MCZzaXplPWI5OTk5XzEwMDAwJnNlYz0xNTczNDk4MTUyNzU1JmRpPTBkZmY3MzdiNWViN2U5YzJiNGFkMGIwMWY3ODQ1OWRhJmltZ3R5cGU9MCZzcmM9aHR0cDovL3d3dy5rb2tvamlhLmNvbS9QdWJsaWMvaW1hZ2VzL3VwbG9hZC9hcnRpY2xlLzIwMTYtMDcvNTc5MGJjNzgyNjRiOS5wbmc?x-oss-process=image/format,png)
-
 # MySQL并发控制
 MySQL的并发在两个层面：服务器层并发和存储引擎并发
 
