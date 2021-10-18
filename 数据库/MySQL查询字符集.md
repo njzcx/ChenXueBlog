@@ -1,0 +1,46 @@
+MySQL字符集多种多样，下面为您列举了其中三种最常见的[MySQL](http://database.51cto.com/art/201010/229097.htm)字符集查看方法，该方法供您参考，希望对您学习MySQL数据库能有所启迪。
+
+###### 查看MySQL数据库服务器和数据库MySQL字符集
+
+```sql
+mysql> show variables like '%char%';  
++--------------------------+-------------------------------------+------  
+| Variable_name            | Value                               |......  
++--------------------------+-------------------------------------+------  
+| character_set_client     | utf8                                |......   -- 客户端字符集  
+| character_set_connection | utf8                                |......  
+| character_set_database   | utf8                                |......   -- 数据库字符集  
+| character_set_filesystem | binary                              |......  
+| character_set_results    | utf8                                |......  
+| character_set_server     | utf8                                |......   -- 服务器字符集  
+| character_set_system     | utf8                                |......  
+| character_sets_dir       | D:\MySQL Server 5.0\share\charsets\ |......  
++--------------------------+-------------------------------------+------ 
+```
+
+###### 查看MySQL数据表（table）的MySQL字符集
+
+```sql
+mysql> show table status from sqlstudy_db like '%countries%';  
++-----------+--------+---------+------------+------+-----------------+------  
+| Name      | Engine | Version | Row_format | Rows | Collation       |......  
++-----------+--------+---------+------------+------+-----------------+------  
+| countries | InnoDB |      10 | Compact    |   11 | utf8_general_ci |......  
++-----------+--------+---------+------------+------+-----------------+------ 
+```
+
+###### 查看MySQL数据列（column）的MySQL字符集
+
+```sql
+mysql> show full columns from countries;  
++----------------------+-------------+-----------------+--------  
+| Field                | Type        | Collation       | .......  
++----------------------+-------------+-----------------+--------  
+| countries_id         | int(11)     | NULL            | .......  
+| countries_name       | varchar(64) | utf8_general_ci | .......  
+| countries_iso_code_2 | char(2)     | utf8_general_ci | .......  
+| countries_iso_code_3 | char(3)     | utf8_general_ci | .......  
+| address_format_id    | int(11)     | NULL            | .......  
++----------------------+-------------+-----------------+-------- 
+```
+
