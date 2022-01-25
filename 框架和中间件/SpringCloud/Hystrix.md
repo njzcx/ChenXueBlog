@@ -1,0 +1,1 @@
+Sentinel和Hystrix的区别：https://github.com/alibaba/Sentinel/wiki/Sentinel-%E4%B8%8E-Hystrix-%E7%9A%84%E5%AF%B9%E6%AF%94?spm=ata.21736010.0.0.386b4b63b988XQ
