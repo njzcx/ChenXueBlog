@@ -73,3 +73,6 @@ done
 ### 字符串匹配：正则表达式
 使用grep -E 正则表达式来匹配想要的东西，如版本号
 https://www.cnblogs.com/harryblog/p/8087783.html
+
+### 本地开启到环境的代理
+
