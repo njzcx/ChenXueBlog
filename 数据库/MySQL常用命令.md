@@ -48,3 +48,35 @@ mysql>source /home/admin/dbname.sql
 mysql -h$host -P$port -u$username -p$password $dbname < dbname.sql
 ```
 
+#### 创建表结构
+
+```sql
+CREATE TABLE `info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ignore` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `ctime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+#### 插入数据
+
+```sql
+INSERT INTO `ignore` (`name`)
+VALUES
+	('chenxue'),
+	('chenxue2');
+
+INSERT INTO `info` (`name`)
+VALUES
+	('chenxue'),
+	('chenxue2');
+```
+
