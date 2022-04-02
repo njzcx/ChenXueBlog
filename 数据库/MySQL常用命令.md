@@ -1,3 +1,9 @@
+
+
+### 元数据
+
+------
+
 #### 查看数据库大小
 
 
@@ -12,41 +18,27 @@
 select * from information_schema.TABLES t where t.TABLE_SCHEMA = '数据库名' and t.TABLE_NAME = '表名';
 ```
 
+#### 查看binlog
 
-
-#### 导出入.sql文件
-
-**导出sql文件**
-
-整库的表结构+数据
-
-```shell
-mysqldump -h$host -P$port -u$username -p$password $dbname > dbname.sql
-```
-
-某个表结构+数据
-
-```shell
-mysqldump -h$host -P$port -u$username -p$password $dbname $table > dbname.sql
-```
-
-仅表结构
-
-```shell
-mysqldump -h$host -P$port -u$username -p$password -d $dbname > dbname.sql
-```
-
-**导入sql文件**
+查看binlog内容（第一个binlog文件）
 
 ```sql
-mysql>source /home/admin/dbname.sql
+show binlog events;
 ```
 
-或
+查看binlog内容（指定binlog文件）
 
-```shell
-mysql -h$host -P$port -u$username -p$password $dbname < dbname.sql
-```
+
+
+查看当前写入的binlog文件
+
+
+
+查看binlog文件列表
+
+### DDL
+
+------
 
 #### 创建表结构
 
@@ -66,6 +58,10 @@ CREATE TABLE `ignore` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
+### DML
+
+------
+
 #### 插入数据
 
 ```sql
@@ -80,3 +76,54 @@ VALUES
 	('chenxue2');
 ```
 
+### DQL
+
+------
+
+>  待补充：数据查询语言
+
+### DCL
+
+------
+
+> 待补充：用户，权限，事务。
+
+### 其他
+
+------
+
+#### 导出入.sql文件
+
+##### 导出sql文件
+
+- 整库的表结构+数据
+
+```shell
+mysqldump -h$host -P$port -u$username -p$password $dbname > dbname.sql
+```
+
+- 某个表结构+数据
+
+```shell
+mysqldump -h$host -P$port -u$username -p$password $dbname $table > dbname.sql
+```
+
+- 仅表结构
+
+```shell
+mysqldump -h$host -P$port -u$username -p$password -d $dbname > dbname.sql
+```
+
+##### 导入sql文件
+
+```sql
+mysql>source /home/admin/dbname.sql
+```
+
+或
+
+```shell
+mysql -h$host -P$port -u$username -p$password $dbname < dbname.sql
+```
+
+### 
