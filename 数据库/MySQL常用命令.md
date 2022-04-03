@@ -28,13 +28,23 @@ show binlog events;
 
 查看binlog内容（指定binlog文件）
 
-
+```sql
+show binlog events in 'mysql-bin.000002';
+```
 
 查看当前写入的binlog文件
 
-
+```sql
+show master status;
+```
 
 查看binlog文件列表
+
+```sql
+show binary logs;
+```
+
+
 
 ### DDL
 
