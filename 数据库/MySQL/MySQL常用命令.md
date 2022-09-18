@@ -68,6 +68,13 @@ CREATE TABLE `ignore` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
+```sql
+ALTER TABLE node_entity DROP PRIMARY KEY;
+alter table new_node_entity add column `new_id` bigint(20) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '测试主键ID';
+```
+
+
+
 ### DML
 
 ------
@@ -86,6 +93,12 @@ VALUES
 	('chenxue2');
 ```
 
+#### 造数据
+
+```sql
+insert into node_entity select * from node_entity;
+```
+
 ### DQL
 
 ------
@@ -97,6 +110,8 @@ VALUES
 ------
 
 > 待补充：用户，权限，事务。
+
+
 
 ### 其他
 
