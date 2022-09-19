@@ -16,6 +16,7 @@
 
 ```sql
 select * from information_schema.TABLES t where t.TABLE_SCHEMA = '数据库名' and t.TABLE_NAME = '表名';
+select *, truncate(data_length/1024/1024, 2) as data_length_MB, truncate(index_length/1024/1024, 2) as index_length_MB, truncate(data_free/1024/1024, 2) as data_free_MB  from information_schema.TABLES t where t.TABLE_SCHEMA = 'chenxue_db' and t.TABLE_NAME = 'new_node_entity'\G
 ```
 
 #### 查看binlog

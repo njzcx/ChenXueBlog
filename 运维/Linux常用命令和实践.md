@@ -1,15 +1,26 @@
-### 磁盘查找
+### 磁盘
 **搜索/home目录下名称是xxx的文件** <br>
 ```find /home -name xxx```
 
 **磁盘大小** <br>
 ```df -h```
 
+**目录大小** <br>
+```du -h -d 1 /```
+
 **分区** <br>
 ```fdisk -l```
 
 **挂载** <br>
 ```mount /dev/sda2 /device```
+
+### 用户权限
+
+**添加用户**：```useradd –d /home/chenxue -m chenxue```，-d指定用户主目录，-m创建用户主目录
+
+**删除用户**：```userdel -r chenxue``` , -r：把用户的主目录一起删除
+
+修改用户密码：
 
 ### shell实现数组追加
 ```shell
