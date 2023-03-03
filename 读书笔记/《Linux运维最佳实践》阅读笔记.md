@@ -183,14 +183,3 @@ CDN节点架构示例：采用LVS双节点 + Nginx集群 + Squid集群分3层结
 Linux常用的高可用软件：Heartbeat和Keepalived。一般Linux上采用VRRP协议的Keepalived进行高可用架构
 
 ### 第4章 配置及调优LVS
-
-
-
-
-
-
-
-
-
-
-
