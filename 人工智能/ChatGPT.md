@@ -1,0 +1,1 @@
+chatGPT原理：https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/?spm=ata.21736010.0.0.abd63fe2M6BB8I
