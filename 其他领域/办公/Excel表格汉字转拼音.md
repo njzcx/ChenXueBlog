@@ -2,11 +2,11 @@
 
 #### 1. 打开Excel，然后按Alt键+F11键打开Viaual Basic编辑器，点击工具栏插入，下拉菜单点击模块。
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/其他领域/办公/images/Excel表格汉字转拼音/1730868859369-175be3ec-8316-4e77-b266-c7333bbc2ca3-20250817223351869.png)
+![img](./images/Excel表格汉字转拼音/1730868859369-175be3ec-8316-4e77-b266-c7333bbc2ca3-20250817223351869.png)
 
 或者
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/其他领域/办公/images/Excel表格汉字转拼音/1730868881856-e759124e-d37d-45a5-851b-f85ef054118a.png)
+![img](./images/Excel表格汉字转拼音/1730868881856-e759124e-d37d-45a5-851b-f85ef054118a.png)
 
 
 
@@ -418,19 +418,19 @@ End Function
 
 效果如下
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/其他领域/办公/images/Excel表格汉字转拼音/1730868990360-63a77a4e-d4aa-4ab1-a4be-b90bdc922ec2.png)
+![img](./images/Excel表格汉字转拼音/1730868990360-63a77a4e-d4aa-4ab1-a4be-b90bdc922ec2.png)
 
 #### 3. 保存VBA函数
 
 表格保存格式必须选择启用宏的工作簿.xlsm，才能保证再次打开时，该函数仍生效（函数是绑定在文档上的，再新建表格此函数不生效）
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/其他领域/办公/images/Excel表格汉字转拼音/1730869362821-6b29cd59-3773-4242-9c0a-1fbb3a588bbd.png)
+![img](./images/Excel表格汉字转拼音/1730869362821-6b29cd59-3773-4242-9c0a-1fbb3a588bbd.png)
 
 #### 4. 使用函数
 
 使用方法为=ChangePY("姓名")或=ChangePY(单元格)
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/其他领域/办公/images/Excel表格汉字转拼音/1730869257069-cb47a32c-dece-4d68-b63b-91f2a4162785.png)
+![img](./images/Excel表格汉字转拼音/1730869257069-cb47a32c-dece-4d68-b63b-91f2a4162785.png)
 
 ### 示例表格
 
