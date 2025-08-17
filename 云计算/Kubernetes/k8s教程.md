@@ -2,7 +2,7 @@
 
 # 1. K8S集群组件
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/云计算/Kubernetes/images/k8s教程/1741683757776-e84a12e0-c934-42aa-9058-178fd1edeb80.png)
+![img](./images/k8s教程/1741683757776-e84a12e0-c934-42aa-9058-178fd1edeb80.png)
 
 控制平面组件（Control Plane Components）
 

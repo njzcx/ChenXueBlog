@@ -15,7 +15,7 @@ tcpdump -i <interface> -s 65535 -w <file>
 
 1. WireShark界面说明
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711355810656-16db2c0a-f876-4627-86da-a8acfca3ed81.png)
+![img](./images/WireShark抓包分析/1711355810656-16db2c0a-f876-4627-86da-a8acfca3ed81.png)
 
 2. 无论是本地或是文件导入，在WireShark都需要**过滤条件（分为 抓包过滤和显示过滤）**，对所需的流量进行分析，抓包过滤路径Capture->Capture Filters，显示过滤路径Analyze->Display Filters。
 
@@ -74,7 +74,7 @@ tcpdump -i <interface> -s 65535 -w <file>
 
 1. 数据包列表中不同协议使用了不同颜色做区分，具体颜色含义见View->Coloring Rules
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711355480742-6360c566-4aac-4fb3-a0e1-891b000be76a.png)
+![img](./images/WireShark抓包分析/1711355480742-6360c566-4aac-4fb3-a0e1-891b000be76a.png)
 
 1. 数据包列表中的time默认是相对时间，可调整数据包列表中时间戳显示格式，调整方法为View ->Time Display Format -> Date and Time of Day。
 2. 数据包详细信息，该面板是最重要的，用来查看协议中的每一个字段。各行信息分别为
@@ -85,11 +85,11 @@ tcpdump -i <interface> -s 65535 -w <file>
 4. Transmission Control Protocol:  传输层的数据段头部信息，此处是TCP
 5. Hypertext Transfer Protocol:  应用层的信息，此处是HTTP协议
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711355929347-618c2fef-9ea8-4720-85c6-9d375b3a1a39.png)
+![img](./images/WireShark抓包分析/1711355929347-618c2fef-9ea8-4720-85c6-9d375b3a1a39.png)
 
 TCP包字段报文格式
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711356300285-19fb1a29-3842-4d1e-b47c-af07448f8028.png)
+![img](./images/WireShark抓包分析/1711356300285-19fb1a29-3842-4d1e-b47c-af07448f8028.png)
 
 1. 数据字节：此包的字节16进制信息，深入分析会用到，常规用的比较少
 2. 数据统计：展示所有包数量、显示的包数量、丢包数量
@@ -100,17 +100,17 @@ TCP包字段报文格式
 
 三次握手原理
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711358540201-04c8c61b-2543-4e70-a491-f39169e58fc2.png)
+![img](./images/WireShark抓包分析/1711358540201-04c8c61b-2543-4e70-a491-f39169e58fc2.png)
 
 wireshark截获到了三次握手的三个数据包。第四个包才是HTTP的， 这说明HTTP的确是使用TCP建立连接的
 
 - TCP FLAGS字段标识：SYN表示建立连接，FIN表示关闭连接，ACK表示响应，PSH表示有DATA数据传输，RST表示连接重置
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711359910275-0b89720f-5c77-4504-9ee3-ad0e35ce7ae2.png)
+![img](./images/WireShark抓包分析/1711359910275-0b89720f-5c77-4504-9ee3-ad0e35ce7ae2.png)
 
 **第一次握手数据包**：客户端发送一个TCP，标志位为SYN，序列号为0， 代表客户端请求建立连接
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711360002402-6d8fd34c-7697-4707-b391-1e99f17c6d30.png)
+![img](./images/WireShark抓包分析/1711360002402-6d8fd34c-7697-4707-b391-1e99f17c6d30.png)
 
 数据包的关键属性如下：
 
@@ -120,7 +120,7 @@ wireshark截获到了三次握手的三个数据包。第四个包才是HTTP的�
 
 **第二次握手的数据包**：服务器发回确认包, 标志位为 SYN,ACK. 将确认序号(ACK)设置为客户端的SYN加1
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711360124291-0d116b9e-f60d-46e4-980e-599a131e1619.png)
+![img](./images/WireShark抓包分析/1711360124291-0d116b9e-f60d-46e4-980e-599a131e1619.png)
 
 数据包的关键属性如下：
 
@@ -132,7 +132,7 @@ wireshark截获到了三次握手的三个数据包。第四个包才是HTTP的�
 
 **第三次握手的数据包**：客户端再次发送确认包(ACK) ，SYN标志位为0，ACK标志位为1.并且把服务器发来ACK的序号字段+1,放在确定字段中发送给对方.并且在数据段放写ISN的+1
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711360207781-c6597f95-7302-4e93-b8d6-d11343da75d5.png)
+![img](./images/WireShark抓包分析/1711360207781-c6597f95-7302-4e93-b8d6-d11343da75d5.png)
 
 数据包的关键属性如下：
 
@@ -168,8 +168,8 @@ Ack=对方Seq+1
 
 一次Http请求
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711443542160-1114764c-8d61-481b-ac05-7d3d16e1384a.png)
+![img](./images/WireShark抓包分析/1711443542160-1114764c-8d61-481b-ac05-7d3d16e1384a.png)
 
 一次Https请求
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/WireShark抓包分析/1711446906522-c95d5510-7724-4216-8007-0dc38848ca9d.png)
+![img](./images/WireShark抓包分析/1711446906522-c95d5510-7724-4216-8007-0dc38848ca9d.png)
