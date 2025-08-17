@@ -40,7 +40,7 @@ SP：服务提供方。负责向用户提供服务，SP不直接对用户认证�
 
 ## 3.5. 访问控制模型
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/安全/images/IAM身份和访问控制/1724663730566-221b038e-c7ba-4b6c-96ba-f7f66b599f09.png)
+![img](./images/IAM身份和访问控制/1724663730566-221b038e-c7ba-4b6c-96ba-f7f66b599f09.png)
 
 ACL：基于权限列表。需要穷举所有权限，并关联到用户上，建设简单但扩展性低
 
