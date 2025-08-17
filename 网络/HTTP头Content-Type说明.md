@@ -22,10 +22,10 @@ Content-Type: multipart/form-data; boundary=something
 
 | **media-type**                                               | **请求截图**                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| multipart/form-data：表单上传文件的格式，需指定enctype等于该格式。消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 --boundary 开始，紧接着内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 --boundary-- 表示结束 | ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/HTTP头Content-Type说明/1711005489708-7a59f4f6-3c62-43cf-9bbf-0fe8ea81370b.png) |
-| application/x-www-form-urlencoded：表单提交默认格式。提交的数据按照 key1=val1&key2=val2 的方式进行编码，key和val会进行URL转码 | ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/HTTP头Content-Type说明/1711005472632-f3b8f72f-5f81-4297-a1c5-b06250eb473d.png) |
-| application/json：适用于Restful接口，传输标准json格式，推荐使用。 | ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/HTTP头Content-Type说明/1711005800297-8718f443-a77d-4083-bdde-7d4428c8c2a7.png) |
-| text/xml：和json差不多，xml更复杂，兼容性没有json强。        | ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/HTTP头Content-Type说明/1711005914919-33ec7a75-7c91-49b3-91f0-d7e76679b36b.png) |
+| multipart/form-data：表单上传文件的格式，需指定enctype等于该格式。消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 --boundary 开始，紧接着内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 --boundary-- 表示结束 | ![img](./images/HTTP头Content-Type说明/1711005489708-7a59f4f6-3c62-43cf-9bbf-0fe8ea81370b.png) |
+| application/x-www-form-urlencoded：表单提交默认格式。提交的数据按照 key1=val1&key2=val2 的方式进行编码，key和val会进行URL转码 | ![img](./images/HTTP头Content-Type说明/1711005472632-f3b8f72f-5f81-4297-a1c5-b06250eb473d.png) |
+| application/json：适用于Restful接口，传输标准json格式，推荐使用。 | ![img](./images/HTTP头Content-Type说明/1711005800297-8718f443-a77d-4083-bdde-7d4428c8c2a7.png) |
+| text/xml：和json差不多，xml更复杂，兼容性没有json强。        | ![img](./images/HTTP头Content-Type说明/1711005914919-33ec7a75-7c91-49b3-91f0-d7e76679b36b.png) |
 | text/plain：直接传输未加工的文本信息                         |                                                              |
 
 

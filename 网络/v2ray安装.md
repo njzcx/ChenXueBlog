@@ -68,4 +68,4 @@ sms-activate.org
 
 ID: 12531399：gmail/数字Zcx
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/网络/images/v2ray安装/1743056092696-7f0143af-05c7-45ef-868e-377a4ca65929.png)
+![img](./images/v2ray安装/1743056092696-7f0143af-05c7-45ef-868e-377a4ca65929.png)
