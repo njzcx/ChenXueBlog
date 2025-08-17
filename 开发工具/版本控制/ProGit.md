@@ -218,12 +218,12 @@ git config --global alias.unstage 'reset HEAD --'
 1. Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 快照 
 2. 如下图，Git 仓库中有五个对象：三个 **blob** 对象（保存着文件快照）、一个 **树** 对象 （记录着目录结构和 blob 对象索引）以及一个 **提交** 对象（包含着指向前述树对象的指针和所有提交信息）
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739238617324-afcf1acf-10cf-45e4-9b63-b73c441c698b.png)
+![img](./images/ProGit/1739238617324-afcf1acf-10cf-45e4-9b63-b73c441c698b.png)
 
 1. Git 的分支，其实本质上仅仅是指向提交对象的可变指针。Git 的默认分支名字是 master。 在多次提交操作之后，你其实已经有一个指向最后那个提交对象的 master 分支。 master 分支会在每次提交时自动向前移动。
 2. HEAD 是特殊指针，指向当前所在的本地分支
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739238737124-168d1024-2086-456f-8bc3-7ebdb680cf79.png)
+![img](./images/ProGit/1739238737124-168d1024-2086-456f-8bc3-7ebdb680cf79.png)
 
 ### 分支创建
 
@@ -232,7 +232,7 @@ git config --global alias.unstage 'reset HEAD --'
 git branch testing
 ```
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739238948739-5e92bc6c-5723-43a3-a537-761c3e79a3e8.png)
+![img](./images/ProGit/1739238948739-5e92bc6c-5723-43a3-a537-761c3e79a3e8.png)
 
 ### 分支切换
 
@@ -244,7 +244,7 @@ git checkout testing
 git checkout -b <newbranchname>
 ```
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739238965310-035b258a-7d7f-453a-a328-b054a61557c5.png)
+![img](./images/ProGit/1739238965310-035b258a-7d7f-453a-a328-b054a61557c5.png)
 
 ### 分支合并
 
@@ -257,9 +257,9 @@ git merge hotfix
 
 在合并的时候，你应该注意到了“快进（fast-forward）”这个词。 由于你想要合并的分支 hotfix 所指向的提交 C4 是你所在的提交 C2 的直接后继， **没有提交分叉**，因此 Git 会直接将指针向前移动。换句话说，当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”。
 
-![合并前](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739239306195-31a79c99-4b52-404d-b144-b86559f714d2.png)
+![合并前](./images/ProGit/1739239306195-31a79c99-4b52-404d-b144-b86559f714d2.png)
 
-![合并后](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739239337850-e9dc9eb7-45ee-40de-a6c1-4a59c92aa4dd.png)
+![合并后](./images/ProGit/1739239337850-e9dc9eb7-45ee-40de-a6c1-4a59c92aa4dd.png)
 
 #### 合并提交
 
@@ -267,9 +267,9 @@ git merge hotfix
 
 Git 将此次三方合并的结果做了一个新的快照并且自动创建一个新的提交指向它。 这个被称作一次合并提交，它的特别之处在于他有不止一个父提交。
 
-![合并前](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739239509503-470c2518-8f50-4b61-b3ac-6d3f4a8c100c.png)
+![合并前](./images/ProGit/1739239509503-470c2518-8f50-4b61-b3ac-6d3f4a8c100c.png)
 
-![合并后](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739239523391-528ba2da-2428-49a1-b5fc-c8e590cde1b4.png)
+![合并后](./images/ProGit/1739239523391-528ba2da-2428-49a1-b5fc-c8e590cde1b4.png)
 
 #### 冲突合并
 
@@ -358,15 +358,15 @@ $ git branch --no-merged
 
 它们以 <remote>/<branch> 的形式命名。 例如，如果你想要看你最后一次与远程仓库 origin 通信时 master 分支的状态，你可以查看 origin/master 分支。
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739240784187-5668a5c5-d923-4ecf-aed5-0a230f95b278.png)
+![img](./images/ProGit/1739240784187-5668a5c5-d923-4ecf-aed5-0a230f95b278.png)
 
 如果你在本地的 master 分支做了一些工作，在同一段时间内有其他人推送提交到 git.ourcompany.com 并且更新了它的 master 分支，这就是说你们的提交历史已走向不同的方向。 即便这样，只要你保持不与 origin 服务器连接（并拉取数据），你的 origin/master 指针就不会移动。
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739240829986-fbc9543c-dae1-416b-98fa-cb0ad473bf67.png)
+![img](./images/ProGit/1739240829986-fbc9543c-dae1-416b-98fa-cb0ad473bf67.png)
 
 如果要与给定的远程仓库同步数据，运行 `git fetch <remote>` 命令。从中抓取本地没有的数据，并且更新本地数据库，移动 origin/master 指针到更新之后的位置。
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739240879306-39b7d663-1d10-456d-a8c4-54fe1825f2fb.png)
+![img](./images/ProGit/1739240879306-39b7d663-1d10-456d-a8c4-54fe1825f2fb.png)
 
 跟踪分支
 
@@ -412,7 +412,7 @@ Applying: added staged command
 
 原理是首先找到这两个分支（即当前分支 experiment、变基操作的目标基底分支 master） 的最近共同祖先 C2，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件， 然后将当前分支指向目标基底 C3, 最后以此将之前另存为临时文件的修改依序应用。
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1739325318840-38bc2bb6-0121-4184-a173-48aa3edffd18.png)
+![img](./images/ProGit/1739325318840-38bc2bb6-0121-4184-a173-48aa3edffd18.png)
 
 rebase和merge的相同点和不同点，最终结果所指向的快照始终是一样的，只不过提交历史不同罢了，使用哪个取决于项目情况和成员的观点，并没有哪种方式更好。rebase的提交历史更简洁。使用rebase后，其他人的merge只需要fast-forward便可。
 
@@ -502,11 +502,11 @@ $ git instaweb --httpd=webrick
 
 **集中式工作流**：两个开发者从中心仓库克隆代码下来，同时作了一些修改，那么只有第一个开发者可以顺利地把数据推送回共享服务器。 第二个开发者在推送修改之前，必须先将第一个人的工作合并进来，这样才不会覆盖第一个人的修改。这种模式与SVN概念一样，比较简单，适合于中小型团队。
 
-![集中式工作流](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1740016821474-f420b89e-a0fc-48cb-acf3-0281b178389d.png)
+![集中式工作流](./images/ProGit/1740016821474-f420b89e-a0fc-48cb-acf3-0281b178389d.png)
 
 **集成管理者工作流**：开发者从项目克隆出一个自己的仓库或分支，然后将自己的修改推送上去。 接着请求项目仓库的管理者拉取更新合并到项目中。 管理者可以将开发者的仓库或分支作为远程仓库添加进来，在本地评审和测试变更，将其合并入主分支并推送回项目仓库。这是 GitHub 和 GitLab 等集线器式（hub-based）工具最常用的工作流程。
 
-![集成管理者工作流](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1740017072440-debdc6c2-42d6-4f80-9d94-ea05cd3bdde0.png)
+![集成管理者工作流](./images/ProGit/1740017072440-debdc6c2-42d6-4f80-9d94-ea05cd3bdde0.png)
 
 **主管与副主管工作流**：副主管（lieutenant） 的各个集成管理者分别负责集成项目中的特定部分。 所有这些副主管头上还有一位称为 主管（dictator） 的总集成管理者负责统筹。这种工作流程并不常用，一般拥有数百位协作开发者的超大型项目才会用到这样的工作方式，如 Linux 内核项目。
 
@@ -515,7 +515,7 @@ $ git instaweb --httpd=webrick
 3. 主管将所有副主管的 master 分支并入自己的 master 分支中。
 4. 最后，主管将集成后的 master 分支推送到参考仓库中，以便所有其他开发者以此为基础进行变基。
 
-![主管与副主管工作流](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1740017181623-0bdab16f-2ab4-472c-8719-ecdb2322f13a.png)
+![主管与副主管工作流](./images/ProGit/1740017181623-0bdab16f-2ab4-472c-8719-ecdb2322f13a.png)
 
 ### 向项目贡献
 
@@ -849,7 +849,7 @@ checkout原理
 2. 将 Index 填充为该分支最后提交的快照
 3. 然后将 Index 的内容复制到 工作目录 中
 
-![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1740479540680-9db345d2-0af9-4a0b-a163-fc4eb71d0504.png)
+![img](./images/ProGit/1740479540680-9db345d2-0af9-4a0b-a163-fc4eb71d0504.png)
 
 reset原理
 
@@ -1469,7 +1469,7 @@ $ git cat-file -p master^{tree}
 # 上述三种模式即是 Git 文件（即数据对象）的所有合法模式，还有其他一些模式，但用于目录项和子模块。
 ```
 
-![树对象模型(简化)](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/开发工具/版本控制/images/ProGit/1741922872335-cbd61177-d335-4573-b70e-ced3d6a74636.png)
+![树对象模型(简化)](./images/ProGit/1741922872335-cbd61177-d335-4573-b70e-ced3d6a74636.png)
 
 Git 根据Index区创建并记录一个对应的树对象，所以需要通过`git update-index`暂存一些文件来创建一个暂存区。 
 
