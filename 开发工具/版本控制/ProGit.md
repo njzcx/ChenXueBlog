@@ -1,4 +1,4 @@
-书籍地址：https://git-scm.com/book/zh/v2
+> 书籍地址：https://git-scm.com/book/zh/v2
 
 ## Git基础
 
