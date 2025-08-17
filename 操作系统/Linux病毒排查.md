@@ -22,18 +22,19 @@ Nov  8 17:20:01 iZ6wee2x3yejood3cyxatwZ CROND[21986]: (root) CMD (/usr/lib64/sa/
 Nov  8 17:30:01 iZ6wee2x3yejood3cyxatwZ CROND[22548]: (root) CMD (/usr/lib64/sa/sa1 1 1)
 ```
 
-1. 检查0anacron无问题，同时根据文件修改时间判断非近期修改。检查gcc.sh发现存在问题，根据文件修改时间判断是最近修改，其中libudev.so是病毒源，根据该文件时间判断也是最新创建的。
+4. 检查0anacron无问题，同时根据文件修改时间判断非近期修改。检查gcc.sh发现存在问题，根据文件修改时间判断是最近修改，其中libudev.so是病毒源，根据该文件时间判断也是最新创建的。
 
 ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/操作系统/images/Linux病毒排查/1699436492729-52848156-db2b-4937-90fe-d690a719882e.png)
 
 该代码逻辑：打开网卡，复制病毒源，并执行该病毒库。该gcc.sh是如何定时执行的呢？
 
-1. 检查`/etc/crontab`文件发现有定时任务，每3分钟执行一次gcc.sh脚本，所以基本定位清楚了。
-2. **除此之外，很重要一点**，再根据时间查询近期修改的文件`find /etc/ -ctime -1 -type f`，发现在/etc/init.d/中还有其他病毒脚本
+5. 检查`/etc/crontab`文件发现有定时任务，每3分钟执行一次gcc.sh脚本，所以基本定位清楚了。
+
+6. **除此之外，很重要一点**，再根据时间查询近期修改的文件`find /etc/ -ctime -1 -type f`，发现在/etc/init.d/中还有其他病毒脚本
 
 ![img](/Users/zhangchenxue/CodeProject/njzcx/ChenXueBlog/操作系统/images/Linux病毒排查/1699436828506-788f5d30-7fb9-4093-8ac9-2d1fedb29d9b.png)
 
-1. 再检查进程，发现这些脚本一启动就会被云平台kill掉，无法通过`strace -tt -p {pid}`跟踪，也无法根据/proc/{pid}查看进程信息，但根据上文基本定位到病毒的启动方式和本体了
+7. 再检查进程，发现这些脚本一启动就会被云平台kill掉，无法通过`strace -tt -p {pid}`跟踪，也无法根据/proc/{pid}查看进程信息，但根据上文基本定位到病毒的启动方式和本体了
 
 # 3. 处理方式
 
